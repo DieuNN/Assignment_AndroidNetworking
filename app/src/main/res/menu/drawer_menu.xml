@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="Các sản phẩm">
+        <menu>
+            <item android:id="@+id/menu_all_products"
+                android:title="Tất cả sản phẩm"/>
+            <item
+                android:id="@+id/menu_phone"
+                android:title="Điện thoại" />
+            <item
+                android:id="@+id/menu_laptop"
+                android:title="Máy tính"/>
+            <item android:id="@+id/menu_tablet"
+                android:title="Máy tính bảng"/>
+            <item android:id="@+id/menu_smartwatch"
+                android:title="Đồng hồ thông minh"/>
+        </menu>
+    </item>
+
+    <item android:title="Thông tin">
+        <menu>
+            <item android:id="@+id/menu_info"
+                android:title="Thông tin"/>
+            <item android:id="@+id/menu_contact"
+                android:title="Liên hệ"/>
+            <item android:id="@+id/menu_logout"
+                android:title="Đăng xuất"/>
+            <item android:id="@+id/menu_exit"
+                android:title="Thoát"/>
+        </menu>
+    </item>
+</menu>
