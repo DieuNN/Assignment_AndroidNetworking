@@ -7,6 +7,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.navigation.fragment.findNavController
 import com.dieunn.assignment_androidnetworking.R
+import com.dieunn.assignment_androidnetworking.UserInfoInstance
 import com.dieunn.assignment_androidnetworking.databinding.FragmentHomeBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -58,14 +59,16 @@ class HomeFragment : Fragment() {
                     .replace(binding.fragmentContainerHome.id, TabletFragment()).commit()
                 R.id.menu_smartwatch -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(binding.fragmentContainerHome.id, SmartWatchFragment()).commit()
-//                R.id.menu_info -> requireActivity().supportFragmentManager.beginTransaction()
-//                    .replace(binding.fragmentContainerHome.id, AllProductFragment()).commit()
-//                R.id.menu_contact -> requireActivity().supportFragmentManager.beginTransaction()
-//                    .replace(binding.fragmentContainerHome.id, AllProductFragment()).commit()
-//                R.id.menu_logout -> requireActivity().supportFragmentManager.beginTransaction()
-//                    .replace(binding.fragmentContainerHome.id, AllProductFragment()).commit()
-//                R.id.menu_exit -> requireActivity().supportFragmentManager.beginTransaction()
-//                    .replace(binding.fragmentContainerHome.id, AllProductFragment()).commit()
+                R.id.menu_info -> requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(binding.fragmentContainerHome.id, InfoFragment()).commit()
+                R.id.menu_logout -> {
+                    UserInfoInstance.username = ""
+                    findNavController().popBackStack(R.id.loginFragment, true)
+
+                }
+                R.id.menu_exit -> {
+                    requireActivity().finishAffinity()
+                }
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true

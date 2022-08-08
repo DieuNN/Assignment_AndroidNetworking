@@ -47,5 +47,11 @@ interface AppAPI {
         productId : String,
     )
 
+    @FormUrlEncoded
+    @POST("user/cart")
+    suspend fun removeItemsInUserCart(
+        @Field("username")
+        username: String
+    )
 
 }

@@ -18,6 +18,7 @@
         android:layout_height="128dp">
 
         <TextView
+            android:textSize="22sp"
             android:id="@+id/txtTotal"
             android:textColor="#ff0000"
             android:text="Total: "
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:id="@+id/btnThanhToan"
             android:textColor="@color/white"
             android:text="Thanh toán"
             android:layout_marginTop="16dp"

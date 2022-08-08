@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dieunn.assignment_androidnetworking.ApiInstance
 import com.dieunn.assignment_androidnetworking.R
@@ -35,8 +36,21 @@ class CartFragment : Fragment() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        reloadCart()
+        
+        binding.btnThanhToan.setOnClickListener {
+            GlobalScope.launch(Dispatchers.Main) {
+                ApiInstance.api.removeItemsInUserCart(UserInfoInstance.username)
+                reloadCart()
+                Toast.makeText(requireContext(), "Thanh toán thành công", Toast.LENGTH_SHORT).show()
+                binding.txtTotal.text = "0"
+            }
 
-
+        }
+    }
+    
+    
+    private fun reloadCart() {
         binding.cartListItem.apply {
             layoutManager = LinearLayoutManager(requireContext())
             ApiInstance.api.getUserCart(UserInfoInstance.username)

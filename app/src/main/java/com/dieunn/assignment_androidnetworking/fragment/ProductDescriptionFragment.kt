@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.dieunn.assignment_androidnetworking.ApiInstance
 import com.dieunn.assignment_androidnetworking.R
@@ -43,11 +44,10 @@ class ProductDescriptionFragment : Fragment() {
         }
 
         binding.btnAddToCart.setOnClickListener {
-            if (binding.txtAmount.text.toString().toInt() <= 0) {
-                return@setOnClickListener
-            }
-            GlobalScope.launch {
+
+            GlobalScope.launch(Dispatchers.Main) {
                 ApiInstance.api.addToCart(UserInfoInstance.username, bundle.getString("id")!!)
+                Toast.makeText(requireContext(), "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show()
             }
         }
 
